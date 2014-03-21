@@ -4,7 +4,7 @@ String[] shaders = new String[] {
   "brcosa.glsl", "hue.glsl", "pixelate.glsl", "blur.glsl", 
   "channels.glsl", "threshold.glsl", "neon.glsl", "edges.glsl",
   "wrap.glsl", "deform.glsl", "pixelrolls.glsl", "patches.glsl", 
-  "modcolor.glsl", "halftone.glsl", "invert.glsl"};
+  "modcolor.glsl", "halftone.glsl", "halftone_cmyk.glsl", "invert.glsl", "bilateral_filter.glsl"};
 
 PShader shade;
 PImage img1, img2, img3;
@@ -29,7 +29,7 @@ void setup()
 }
 
 void draw() 
-{  
+{
   setShaderParameters();
 
   // turn on shader and display source
@@ -147,9 +147,21 @@ void setShaderParameters()
     shade.set("pixelsPerRow", (int) map(mouseX, 0, width, 2, 100));
   }
   
-  // inversion (no parameters)
+  // halftone cmyk
   else if (idxShader == 14) {
+    shade.set("density", map(mouseX, 0, width, 0, 1));
+    shade.set("frequency", map(mouseY, 0, height, 0, 100));
   }
+
+  // inversion (no parameters)
+  else if (idxShader == 15) {
+  }
+
+  // bilateral filter (no parameters)
+  else if (idxShader == 16) {
+    shade.set("resolution", float(width), float(height));
+    shade.set("sigma", 20*pow(map(mouseX, 0, width, 0, 1),2));
+  }    
 }
 
 void keyPressed() {
