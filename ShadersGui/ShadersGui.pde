@@ -13,7 +13,7 @@ void setup()
   setupGui();  
   setShader(0);
   pg = createGraphics(960, 720, P2D);
-  textureImg = loadImage("hummingbird.jpg");
+  textureImg = loadImage("../TextureShaders/data/hummingbird.jpg");
 }
 
 void draw() 
