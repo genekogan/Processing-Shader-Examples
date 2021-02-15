@@ -6,9 +6,8 @@ void setupGui() {
   
   DropdownList guiShaders = cp5.addDropdownList("selectShader");
   guiShaders.setPosition(480, 25).setSize(240, height-10).setItemHeight(25).setBarHeight(25);
-  guiShaders.captionLabel().set("shaders");
-  guiShaders.captionLabel().style().marginTop = 1;
-  guiShaders.captionLabel().style().marginLeft = 1;
+  guiShaders.setCaptionLabel("shaders");
+
   for (int i=0; i<shaders.size(); i++) {
     guiShaders.addItem(shaders.get(i).path, i);
   }  
