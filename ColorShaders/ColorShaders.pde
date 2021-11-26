@@ -7,11 +7,11 @@ int idxShader = -1;
 
 void setup() 
 {
-  size(1440, 720, OPENGL);
+  size(1440, 720, P2D);
   setupShaders();
   setupGui();  
   setShader(0);
-  pg = createGraphics(960, 720, OPENGL);
+  pg = createGraphics(960, 720, P2D);
 }
 
 void draw() 
@@ -27,5 +27,3 @@ void draw()
   rect(0, 0, 480, height);
   image(pg, 480, 0); 
 }
-
-

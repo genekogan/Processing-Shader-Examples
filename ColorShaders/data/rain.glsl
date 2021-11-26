@@ -44,7 +44,7 @@ vec4 taylorInvSqrt(vec4 r)
   return 1.79284291400159 - 0.85373472095314 * r;
 }
 
-vec2 fade(vec2 t) {
+vec2 fader(vec2 t) {
   return t*t*t*(t*(t*6.0-15.0)+10.0);
 }
 
@@ -82,7 +82,7 @@ float cnoise(vec2 P)
   float n01 = dot(g01, vec2(fx.z, fy.z));
   float n11 = dot(g11, vec2(fx.w, fy.w));
 
-  vec2 fade_xy = fade(Pf.xy);
+  vec2 fade_xy = fader(Pf.xy);
   vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);
   float n_xy = mix(n_x.x, n_x.y, fade_xy.y);
   return 2.3 * n_xy;
@@ -124,7 +124,7 @@ float pnoise(vec2 P, vec2 rep)
   float n01 = dot(g01, vec2(fx.z, fy.z));
   float n11 = dot(g11, vec2(fx.w, fy.w));
 
-  vec2 fade_xy = fade(Pf.xy);
+  vec2 fade_xy = fader(Pf.xy);
   vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);
   float n_xy = mix(n_x.x, n_x.y, fade_xy.y);
   return 1.3 * n_xy;
