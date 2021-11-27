@@ -108,9 +108,9 @@ smoothes between 2 vectors a and b (eg colors)
 using a source value and a smooth amount
 about the base as center.
 */
-vec3 smoothmix(vec3 a, vec3 b, float base, float smooth, float source)
+vec3 smoothmix(vec3 a, vec3 b, float base, float smoother, float source)
 {
-	float f = smoothstep(base-smooth, base+smooth, source );
+  float f = smoothstep(base - smoother, base + smoother, source);
 	vec3 vec = mix(a, b, f);
 	return vec;
 }
